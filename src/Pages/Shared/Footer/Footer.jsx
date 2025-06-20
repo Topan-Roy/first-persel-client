@@ -3,7 +3,7 @@ import ProFirstLogo from '../ProFirstLogo/ProFirstLogo';
 
 const Footer = () => {
     return (
-        <footer className="footer footer-horizontal footer-center  bg-neutral text-neutral-content p-10">
+        <footer className="footer footer-horizontal footer-center  bg-neutral text-neutral-content p-10 mt-5">
             <aside>
                <ProFirstLogo></ProFirstLogo>
                 <p className="font-bold">
