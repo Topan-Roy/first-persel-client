@@ -41,7 +41,7 @@ const TestimonialSlider = () => {
   };
 
   return (
-    <section className="bg-gray-100 py-16 px-4 text-center">
+    <section className="bg-gray-100 py-16 px-4 text-center mt-5">
       <div className="max-w-4xl mx-auto relative">
 
         {/* Icon illustration */}
