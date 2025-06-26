@@ -2,7 +2,7 @@
 @import "tailwindcss";
 @plugin "daisyui";
 
-/* @plugin "daisyui"{
+@plugin "daisyui"{
   themes: light --default, dark;
 }
 
@@ -11,7 +11,7 @@
   default: true;
   --color-primary: #CAEB66;
   --color-secondary: teal;
-} */
+}
 .font-urbanist {
   font-family: "Urbanist", sans-serif;
   font-optical-sizing: auto;

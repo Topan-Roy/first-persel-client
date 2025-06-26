@@ -1,7 +1,8 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router';
-// import SocialLogin from '../SocialLogin/SocialLogin';
+import SocialLogin from '../SocialLogin/SocialLogin';
+
 
 const Login = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
@@ -41,11 +42,11 @@ const Login = () => {
 
                         <div><a className="link link-hover">Forgot password?</a></div>
 
-                        <button className="btn btn-primary text-black mt-4">Login</button>
+                        <button className="btn bg-[#CAEB66] text-black mt-4">Login</button>
                     </fieldset>
-                    <p><small>New to this website? <Link className="btn btn-link" to="/register">Register</Link></small></p>
+                    <p><small>New to this website? <Link className="btn btn-link text-[#CAEB66]" to="/register">Register</Link></small></p>
                 </form>
-                {/* <SocialLogin></SocialLogin> */}
+                <SocialLogin></SocialLogin>
             </div>
         </div>
     );
