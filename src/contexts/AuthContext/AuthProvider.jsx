@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { AuthContext } from './AuthContext';
-import { createUserWithEmailAndPassword, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut } from 'firebase/auth';
-import { auth } from '../../firebase/fairbase,init';
+import { createUserWithEmailAndPassword, GoogleAuthProvider, onAuthStateChanged, sendPasswordResetEmail, signInWithEmailAndPassword, signInWithPopup, signOut } from 'firebase/auth';
+import { auth } from '../../firebase/fairbase.init';
 
 
 const googleProvider = new GoogleAuthProvider();
@@ -20,12 +20,14 @@ const AuthProvider = ({ children }) => {
         return signInWithEmailAndPassword(auth, email, password);
     }
 
-    const signInWithGoogle = () =>{
+    const signInWithGoogle = () => {
         setLoading(true);
         return signInWithPopup(auth, googleProvider);
     }
-
-    const logOut = () =>{
+    const resetPassword = (email) => {
+        return sendPasswordResetEmail(auth, email);
+    };
+    const logOut = () => {
         setLoading(true);
         return signOut(auth);
     }
@@ -48,7 +50,8 @@ const AuthProvider = ({ children }) => {
         createUser,
         signIn,
         signInWithGoogle,
-        logOut
+        logOut,
+        resetPassword
     }
 
     return (
