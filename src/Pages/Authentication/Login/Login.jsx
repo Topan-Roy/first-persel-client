@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { Link, useNavigate } from 'react-router';
+import { Link, useLocation, useNavigate } from 'react-router';
 import Swal from 'sweetalert2';
 import SocialLogin from '../SocialLogin/SocialLogin';
 import useAuth from '../../../hooks/useAuth';
@@ -9,7 +9,8 @@ const Login = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
     const { signIn, resetPassword } = useAuth();
     const navigate = useNavigate();
-
+    const location=useLocation();
+    const from=location.state?.from || '/'
     const [emailForReset, setEmailForReset] = useState('');
 
     const onSubmit = data => {
@@ -25,7 +26,7 @@ const Login = () => {
                     timer: 2000,
                     showConfirmButton: false,
                 });
-                navigate('/');
+                navigate(from);
             })
             .catch(error => {
                 Swal.fire({
