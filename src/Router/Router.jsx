@@ -10,6 +10,7 @@ import SendParcel from "../Pages/SendParcel/SendParcel";
 import DashboardLayout from "../Layout/DashboardLayout";
 import MyParcels from "../Pages/Dashboard/MyParcels/MyParcels";
 import Payment from "../Pages/Dashboard/Payment/Payment";
+import PaymentHistory from "../Pages/Dashboard/PaymentHistory/PaymentHistory";
 
 
 export const router = createBrowserRouter([
@@ -27,9 +28,9 @@ export const router = createBrowserRouter([
                 loader: () => fetch('./serviceCenter.json')
             },
             {
-                path:'sendpersel',
-                element:<PrivateRoute><SendParcel></SendParcel></PrivateRoute>,
-                  loader: () => fetch('./serviceCenter.json')
+                path: 'sendpersel',
+                element: <PrivateRoute><SendParcel></SendParcel></PrivateRoute>,
+                loader: () => fetch('./serviceCenter.json')
             }
         ]
     },
@@ -48,18 +49,22 @@ export const router = createBrowserRouter([
         ]
     },
     {
-        path:'dashboard',
-        element:<PrivateRoute>
+        path: 'dashboard',
+        element: <PrivateRoute>
             <DashboardLayout></DashboardLayout>
         </PrivateRoute>,
-        children:[
+        children: [
             {
-                path:'myParcels',
-                Component:MyParcels
+                path: 'myParcels',
+                Component: MyParcels
             },
             {
-                path:'payment/:parcelId',
-                Component:Payment
+                path: 'payment/:parcelId',
+                Component: Payment
+            },
+            {
+                path: 'paymentHistory',
+                Component: PaymentHistory
             }
         ]
     }

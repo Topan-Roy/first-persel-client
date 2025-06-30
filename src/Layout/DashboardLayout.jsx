@@ -1,6 +1,7 @@
 import React from 'react';
 import { NavLink, Outlet } from 'react-router';
 import ProFirstLogo from '../Pages/Shared/ProFirstLogo/ProFirstLogo';
+import { FaMoneyCheckAlt, FaSearchLocation, FaUserEdit } from 'react-icons/fa';
 
 
 const DashboardLayout = () => {
@@ -43,6 +44,24 @@ const DashboardLayout = () => {
                     <ProFirstLogo></ProFirstLogo>
                     <li><a>Home</a></li>
                     <li><NavLink to="/dashboard/myParcels">My Parcels</NavLink></li>
+                     <li>
+                        <NavLink to="/dashboard/paymentHistory">
+                            <FaMoneyCheckAlt className="inline-block mr-2" />
+                            Payment History
+                        </NavLink>
+                    </li>
+                     <li>
+                        <NavLink to="/dashboard/track">
+                            <FaSearchLocation className="inline-block mr-2" />
+                            Track a Package
+                        </NavLink>
+                    </li>
+                    <li>
+                        <NavLink to="/dashboard/profile">
+                            <FaUserEdit className="inline-block mr-2" />
+                            Update Profile
+                        </NavLink>
+                    </li>
                 </ul>
             </div>
         </div>
