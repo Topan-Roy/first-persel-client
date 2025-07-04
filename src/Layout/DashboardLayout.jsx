@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink, Outlet } from 'react-router';
 import ProFirstLogo from '../Pages/Shared/ProFirstLogo/ProFirstLogo';
-import { FaMoneyCheckAlt, FaSearchLocation, FaUserEdit } from 'react-icons/fa';
+import { FaBoxOpen, FaHome, FaMoneyCheckAlt, FaSearchLocation, FaUserCheck, FaUserClock, FaUserEdit } from 'react-icons/fa';
 
 
 const DashboardLayout = () => {
@@ -30,7 +30,7 @@ const DashboardLayout = () => {
                         </label>
                     </div>
                     <div className="mx-2 flex-1 px-2 lg:hidden">Dashboard</div>
-                    
+
                 </div>
                 {/* Page content here */}
                 <Outlet></Outlet>
@@ -39,18 +39,26 @@ const DashboardLayout = () => {
             </div>
             <div className="drawer-side">
                 <label htmlFor="my-drawer-2" aria-label="close sidebar" className="drawer-overlay"></label>
-                <ul className="menu bg-base-200 text-base-content min-h-full w-80 p-4"> 
+                <ul className="menu bg-base-200 text-base-content min-h-full w-80 p-4">
                     {/* Sidebar content here */}
                     <ProFirstLogo></ProFirstLogo>
-                    <li><a>Home</a></li>
-                    <li><NavLink to="/dashboard/myParcels">My Parcels</NavLink></li>
-                     <li>
+                    <li>
+                        <NavLink to="/dashboard">
+                              <FaHome className="inline-block mr-2" />
+                               Home</NavLink>
+                    </li>
+                    <li>
+                        <NavLink to="/dashboard/myParcels">
+                         <FaBoxOpen className="inline-block mr-2" />
+                        My Parcels
+                        </NavLink></li>
+                    <li>
                         <NavLink to="/dashboard/paymentHistory">
                             <FaMoneyCheckAlt className="inline-block mr-2" />
                             Payment History
                         </NavLink>
                     </li>
-                     <li>
+                    <li>
                         <NavLink to="/dashboard/track">
                             <FaSearchLocation className="inline-block mr-2" />
                             Track a Package
@@ -60,6 +68,19 @@ const DashboardLayout = () => {
                         <NavLink to="/dashboard/profile">
                             <FaUserEdit className="inline-block mr-2" />
                             Update Profile
+                        </NavLink>
+                    </li>
+                     {/* riders link */}
+                    <li>
+                        <NavLink to="/dashboard/active-riders">
+                            <FaUserCheck className="inline-block mr-2" />
+                            Active Riders
+                        </NavLink>
+                    </li>
+                    <li>
+                        <NavLink to="/dashboard/pending-riders">
+                            <FaUserClock className="inline-block mr-2" />
+                            Pending Riders
                         </NavLink>
                     </li>
                 </ul>

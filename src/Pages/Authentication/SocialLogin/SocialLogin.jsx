@@ -3,18 +3,31 @@ import useAuth from '../../../hooks/useAuth';
 import { FcGoogle } from "react-icons/fc";
 import Swal from 'sweetalert2';
 import { useLocation, useNavigate } from 'react-router';
+import useAxios from '../../../hooks/useAxios';
 
 const SocialLogin = () => {
     const navigate = useNavigate();
     const location=useLocation();
+      const axiosInstance = useAxios();
     const from=location.state?.from || '/'
  
     const { signInWithGoogle } = useAuth();
 
     const handleGoogleSignIn = () => {
         signInWithGoogle()
-            .then(result => {
+            .then(async(result) => {
                 console.log(result.user)
+                 const user = result.user;
+                 // update userinfo in the database
+                const userInfo = {
+                    email: user.email,
+                    role: 'user', // default role
+                    created_at: new Date().toISOString(),
+                    last_log_in: new Date().toISOString()
+                }
+
+                const res = await axiosInstance.post('/users', userInfo);
+                console.log('user update info', res.data)
                  Swal.fire({
                                     icon: 'success',
                                     title: 'Register Successful',

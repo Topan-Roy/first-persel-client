@@ -28,6 +28,7 @@ const Navbar = () => {
                 <li><NavLink to="/dashboard">Dashboard</NavLink></li>
             </>
         }
+           <li><NavLink to="/beARider">Be a Rider</NavLink></li>
         <li><NavLink to="/about">About Us</NavLink></li>
     </>;
 
@@ -44,7 +45,7 @@ const Navbar = () => {
                         {navItems}
                     </ul>
                 </div>
-                <a className="btn btn-ghost text-xl"><ProFirstLogo /></a>
+                <span className="btn btn-ghost text-xl"><ProFirstLogo /></span>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">
