@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink, Outlet } from 'react-router';
 import ProFirstLogo from '../Pages/Shared/ProFirstLogo/ProFirstLogo';
-import { FaBoxOpen, FaHome, FaMoneyCheckAlt, FaSearchLocation, FaUserCheck, FaUserClock, FaUserEdit, FaUserShield } from 'react-icons/fa';
+import { FaBoxOpen, FaHome, FaMoneyCheckAlt, FaMotorcycle, FaSearchLocation, FaUserCheck, FaUserClock, FaUserEdit, FaUserShield } from 'react-icons/fa';
 import useUserRole from '../hooks/useUserRole';
 
 
@@ -84,6 +84,14 @@ const DashboardLayout = () => {
                     {/* riders link */}
                     {!roleLoading && role === 'admin' &&
                         <>
+                            <li>
+                                <NavLink to="/dashboard/assign-rider" className={({ isActive }) =>
+                                    isActive ? "text-[#CAEB66] font-semibold" : ""
+                                }>
+                                    <FaMotorcycle className="inline-block mr-2" />
+                                    Assign Rider
+                                </NavLink>
+                            </li>
                             <li>
                                 <NavLink to="/dashboard/active-riders" className={({ isActive }) =>
                                     isActive ? "text-[#CAEB66] font-semibold" : ""
