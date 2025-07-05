@@ -1,10 +1,13 @@
 import React from 'react';
 import { NavLink, Outlet } from 'react-router';
 import ProFirstLogo from '../Pages/Shared/ProFirstLogo/ProFirstLogo';
-import { FaBoxOpen, FaHome, FaMoneyCheckAlt, FaSearchLocation, FaUserCheck, FaUserClock, FaUserEdit } from 'react-icons/fa';
+import { FaBoxOpen, FaHome, FaMoneyCheckAlt, FaSearchLocation, FaUserCheck, FaUserClock, FaUserEdit, FaUserShield } from 'react-icons/fa';
+import useUserRole from '../hooks/useUserRole';
 
 
 const DashboardLayout = () => {
+    const { role, roleLoading } = useUserRole();
+    console.log(role);
     return (
         <div className="drawer lg:drawer-open">
             <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
@@ -43,46 +46,70 @@ const DashboardLayout = () => {
                     {/* Sidebar content here */}
                     <ProFirstLogo></ProFirstLogo>
                     <li>
-                        <NavLink to="/dashboard">
-                              <FaHome className="inline-block mr-2" />
-                               Home</NavLink>
+                        <NavLink to="/dashboard" >
+                            <FaHome className="inline-block mr-2" />
+                            Home</NavLink>
                     </li>
                     <li>
-                        <NavLink to="/dashboard/myParcels">
-                         <FaBoxOpen className="inline-block mr-2" />
-                        My Parcels
+                        <NavLink to="/dashboard/myParcels" className={({ isActive }) =>
+                            isActive ? "text-[#CAEB66] font-semibold" : ""
+                        }>
+                            <FaBoxOpen className="inline-block mr-2" />
+                            My Parcels
                         </NavLink></li>
                     <li>
-                        <NavLink to="/dashboard/paymentHistory">
+                        <NavLink to="/dashboard/paymentHistory" className={({ isActive }) =>
+                            isActive ? "text-[#CAEB66] font-semibold" : ""
+                        }>
                             <FaMoneyCheckAlt className="inline-block mr-2" />
                             Payment History
                         </NavLink>
                     </li>
                     <li>
-                        <NavLink to="/dashboard/track">
+                        <NavLink to="/dashboard/track" className={({ isActive }) =>
+                            isActive ? "text-[#CAEB66] font-semibold" : ""
+                        }>
                             <FaSearchLocation className="inline-block mr-2" />
                             Track a Package
                         </NavLink>
                     </li>
                     <li>
-                        <NavLink to="/dashboard/profile">
+                        <NavLink to="/dashboard/profile" className={({ isActive }) =>
+                            isActive ? "text-[#CAEB66] font-semibold" : ""
+                        }>
                             <FaUserEdit className="inline-block mr-2" />
                             Update Profile
                         </NavLink>
                     </li>
-                     {/* riders link */}
-                    <li>
-                        <NavLink to="/dashboard/active-riders">
-                            <FaUserCheck className="inline-block mr-2" />
-                            Active Riders
-                        </NavLink>
-                    </li>
-                    <li>
-                        <NavLink to="/dashboard/pending-riders">
-                            <FaUserClock className="inline-block mr-2" />
-                            Pending Riders
-                        </NavLink>
-                    </li>
+                    {/* riders link */}
+                    {!roleLoading && role === 'admin' &&
+                        <>
+                            <li>
+                                <NavLink to="/dashboard/active-riders" className={({ isActive }) =>
+                                    isActive ? "text-[#CAEB66] font-semibold" : ""
+                                }>
+                                    <FaUserCheck className="inline-block mr-2" />
+                                    Active Riders
+                                </NavLink>
+                            </li>
+                            <li>
+                                <NavLink to="/dashboard/pending-riders" className={({ isActive }) =>
+                                    isActive ? "text-[#CAEB66] font-semibold" : ""
+                                }>
+                                    <FaUserClock className="inline-block mr-2" />
+                                    Pending Riders
+                                </NavLink>
+                            </li>
+                            <li>
+                                <NavLink to="/dashboard/makeAdmin" className={({ isActive }) =>
+                                    isActive ? "text-[#CAEB66] font-semibold" : ""
+                                }>
+                                    <FaUserShield className="inline-block mr-2" />
+                                    Make Admin
+                                </NavLink>
+                            </li>
+                        </>
+                    }
                 </ul>
             </div>
         </div>

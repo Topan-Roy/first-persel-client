@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 
-import { Link, useNavigate} from 'react-router';
+import { Link, useLocation, useNavigate} from 'react-router';
 import useAuth from '../../../hooks/useAuth';
 import SocialLogin from '../SocialLogin/SocialLogin';
 import Swal from 'sweetalert2';
@@ -15,6 +15,8 @@ const Register = () => {
        const [profilePic, setProfilePic] = useState('');
          const axiosInstance = useAxios();
     const navigate = useNavigate();
+    const location=useLocation();
+    const from=location.state?.from || '/';
     const onSubmit = data => {
         console.log(data);
         createUser(data.email, data.password)
@@ -46,7 +48,7 @@ const Register = () => {
                     timer: 2000,
                     showConfirmButton: false,
                 });
-                navigate('/');
+                 navigate(from);
             })
             .catch(error => {
                 console.error(error);
@@ -111,7 +113,7 @@ const Register = () => {
                         <div><a className="link link-hover">Forgot password?</a></div>
                         <button className="btn bg-[#CAEB66] text-black mt-4">Register</button>
                     </fieldset>
-                    <p><small>Already have an account? <Link className="btn btn-link text-[#CAEB66]" to="/login">Login</Link></small></p>
+                    <p><small>Already have an account? <Link  className="btn btn-link text-[#CAEB66]" to="/login">Login</Link></small></p>
                 </form>
                 <SocialLogin></SocialLogin>
             </div>

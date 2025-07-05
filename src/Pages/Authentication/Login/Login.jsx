@@ -97,7 +97,7 @@ const Login = () => {
                         </fieldset>
                         <p className="mt-4 text-center text-sm">
                             New to this website?{" "}
-                            <Link className="text-[#CAEB66] font-medium underline" to="/register">
+                            <Link state={{from}} className="text-[#CAEB66] font-medium underline" to="/register">
                                 Register
                             </Link>
                         </p>
